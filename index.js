@@ -41,6 +41,8 @@ export type Profile = {
   signedUp: OptionalBoolean,
 }
 
+console.log(RNKakaoSignin);
+
 export default {
   login(): Promise<LoginResult> {
     return RNKakaoSignin.login();
@@ -56,7 +58,7 @@ export default {
    * @returns {*|Promise<Profile>}
    */
   getProfile(keys?: ProfileKey[]): Promise<Profile> {
-    return RNKakaoSignin.getProfile(keys);
+    return RNKakaoSignin.getProfile();
   },
 };
 
