@@ -1,0 +1,5 @@
+rootProject.name = 'sample'
+include ':react-native-kakao-signin'
+project(':react-native-kakao-signin').projectDir = new File(rootProject.projectDir, '../node_modules/@ybrain/react-native-kakao-signin/android')
+
+include ':app'
