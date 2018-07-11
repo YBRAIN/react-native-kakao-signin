@@ -13,5 +13,13 @@
   "license": "MIT",
   "peerDependencies": {
     "react-native": "*"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YBRAIN/react-native-kakao-signin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YBRAIN/react-native-kakao-signin/issues"
+  },
+  "homepage": "https://github.com/YBRAIN/react-native-kakao-signin#readme"
 }
