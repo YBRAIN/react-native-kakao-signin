@@ -253,15 +253,8 @@ public class RNKakaoSigninModule extends ReactContextBaseJavaModule implements A
   }
 
   @ReactMethod
-  private void getProfile(ReadableArray readableArray, final Promise promise) {
-    List<String> keys = new ArrayList<>();
-    if (readableArray != null) {
-      for (int i = 0; i < readableArray.size(); i++) {
-        keys.add(readableArray.getString(i));
-      }
-    }
-
-    UserManagement.getInstance().me(keys, new MeV2ResponseCallback() {
+  private void getProfile(final Promise promise) {
+    UserManagement.getInstance().me(null, new MeV2ResponseCallback() {
       @Override
       public void onSuccess(MeV2Response result) {
         WritableMap map = new WritableNativeMap();
