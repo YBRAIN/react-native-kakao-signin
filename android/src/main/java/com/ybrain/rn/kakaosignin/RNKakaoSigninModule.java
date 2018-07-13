@@ -65,7 +65,12 @@ public class RNKakaoSigninModule extends ReactContextBaseJavaModule implements A
     this.reactAppContext = reactAppContext;
     reactAppContext.addActivityEventListener(this);
 
-    KakaoSDK.init(new KakaoSDKAdapter(reactAppContext.getApplicationContext()));
+    try {
+      KakaoSDK.init(new KakaoSDKAdapter(reactAppContext.getApplicationContext()));
+    }catch(KakaoSDK.AlreadyInitializedException e){
+      // Originally, init should be call in Application.onCreate().
+      // Ignore already init
+    }
 
     sessionCallback = new SessionCallback();
     Session.getCurrentSession().addCallback(sessionCallback);
