@@ -22,7 +22,13 @@ RCT_REMAP_METHOD(login,
             
             // signIn success
             NSString* result = [NSString stringWithFormat:@"{accessToken: %@}", session.token.accessToken];
-            resolve(result);
+            
+            NSDictionary *dict = @{
+                                   @"accessToken" : session.token.accessToken,
+                                   };
+
+            
+            resolve(dict);
         } else {
             RCTLogInfo(@"error=%@", error);
             reject(@"Login failed", @"Sign in failed", error);
