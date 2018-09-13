@@ -9,6 +9,7 @@
 {
     return dispatch_get_main_queue();
 }
+
 RCT_EXPORT_MODULE()
 
 RCT_REMAP_METHOD(login,
@@ -18,16 +19,14 @@ RCT_REMAP_METHOD(login,
     KOSession *session = [KOSession sharedSession];
     [session openWithCompletionHandler:^(NSError *error) {
         if ([[KOSession sharedSession] isOpen]) {
-            NSDate* expire = session.token.accessTokenExpiresAt;
+            NSDate *expire = session.token.accessTokenExpiresAt;
             
             // signIn success
-            NSString* result = [NSString stringWithFormat:@"{accessToken: %@}", session.token.accessToken];
+            NSString *result = [NSString stringWithFormat:@"{accessToken: %@}", session.token.accessToken];
             
             NSDictionary *dict = @{
                                    @"accessToken" : session.token.accessToken,
                                    };
-
-            
             resolve(dict);
         } else {
             RCTLogInfo(@"error=%@", error);
@@ -55,9 +54,9 @@ RCT_REMAP_METHOD(getProfile,
         } else {
             NSDictionary *dict = @{
                                    @"id" : me.ID,
-                                   @"nickname": me.nickname,
-                                   @"profileImagePath": me.profileImageURL,
-                                   @"thumbImagePath": me.thumbnailImageURL,
+                                   @"nickname": (me.nickname != nil ? me.nickname : [NSNull null]),
+                                   @"profileImagePath": (me.profileImageURL != nil ? me.profileImageURL : [NSNull null]),
+                                   @"thumbImagePath": (me.thumbnailImageURL != nil ? me.thumbnailImageURL : [NSNull null]),
                                    };
             resolve(dict);
         }
