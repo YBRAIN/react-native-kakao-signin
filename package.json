@@ -1,6 +1,6 @@
 {
   "name": "@ybrain/react-native-kakao-signin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Latest react-native kakao signin module",
   "main": "index.js",
   "scripts": {
@@ -23,4 +23,3 @@
   },
   "homepage": "https://github.com/YBRAIN/react-native-kakao-signin#readme"
 }
-
